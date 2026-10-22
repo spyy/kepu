@@ -8,7 +8,7 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Font Awesome -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Google Fonts -->
@@ -32,10 +32,6 @@
                             700: '#15803d',
                             800: '#166534',
                             900: '#14532d',
-                        },
-                        dark: {
-                            800: '#1e293b',
-                            900: '#0f172a',
                         }
                     }
                 }
@@ -49,14 +45,14 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 pb-20 md:pb-0">
+<body class="bg-slate-50 text-slate-800 pb-24 md:pb-8">
 
     <!-- Top Bar Header -->
     <header class="sticky top-0 z-40 bg-slate-900 text-white shadow-md border-b border-slate-800">
         <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <div class="bg-brand-600 text-white p-2.5 rounded-xl shadow-lg">
-                    <i class="fa-solid font-bold fa-wrench text-lg"></i>
+                    <i class="fa-solid fa-wrench text-lg"></i>
                 </div>
                 <div>
                     <h1 class="font-extrabold text-lg leading-tight tracking-tight text-white">Kepun Auto Oy</h1>
@@ -66,10 +62,10 @@
                 </div>
             </div>
             
-            <a href="tel:037157005" class="bg-brand-600 hover:bg-brand-700 active:scale-95 text-white font-bold px-3.5 py-2 rounded-xl text-xs sm:text-sm flex items-center gap-2 transition-all shadow-sm">
-                <i class="fa-solid fa-phone"></i>
-                <span class="hidden sm:inline">Soita: 03-7157005</span>
-                <span class="sm:hidden">Soita</span>
+            <!-- Header Navigation Button -->
+            <a href="https://maps.google.com/?q=Sarvikatu+2,+18100+Heinola" target="_blank" rel="noopener noreferrer" class="bg-slate-800 hover:bg-slate-700 active:scale-95 text-white font-bold px-3.5 py-2 rounded-xl text-xs sm:text-sm flex items-center gap-2 border border-slate-700 transition-all shadow-sm">
+                <i class="fa-solid fa-location-dot text-brand-500"></i>
+                <span>Navigoi</span>
             </a>
         </div>
     </header>
@@ -78,8 +74,8 @@
     <section class="bg-gradient-to-b from-slate-900 to-slate-800 text-white pt-8 pb-10 px-4 rounded-b-3xl shadow-xl">
         <div class="max-w-4xl mx-auto text-center">
             
-            <!-- Dynamic Status Badge -->
-            <div class="inline-flex items-center gap-2 bg-slate-800/80 border border-slate-700/80 px-3 py-1.5 rounded-full text-xs font-semibold mb-5 shadow-inner">
+            <!-- Real-time Opening Status Badge -->
+            <div class="inline-flex items-center gap-2 bg-slate-800/80 border border-slate-700/80 px-3.5 py-1.5 rounded-full text-xs font-semibold mb-5 shadow-inner">
                 <span id="statusDot" class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span id="statusText" class="text-emerald-400">Avoinna tänään 07:00 – 17:00</span>
             </div>
@@ -87,25 +83,16 @@
             <h2 class="text-2xl sm:text-4xl font-black tracking-tight mb-3 leading-snug">
                 Ammattitaitoista autohuoltoa & kolarikorjausta Heinolassa
             </h2>
-            <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-6">
+            <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto">
                 Monimerkkikorjaamo Sarvikadulla. Määräaikaishuollot, ilmastointityöt, diagnostiikka sekä pelti- ja kolarikorjaukset.
             </p>
-
-            <!-- Quick Action Grid -->
-            <div class="grid grid-cols-2 gap-3 max-w-md mx-auto">
-                <a href="tel:037157005" class="flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-bold py-3.5 px-4 rounded-2xl shadow-lg transition-all text-sm">
-                    <i class="fa-solid fa-phone text-base"></i> Soita Korjaamolle
-                </a>
-                <a href="https://maps.google.com/?q=Sarvikatu+2,+18100+Heinola" target="_blank" class="flex items-center justify-center gap-2 bg-slate-700 hover:bg-slate-600 text-white font-bold py-3.5 px-4 rounded-2xl border border-slate-600 shadow-md transition-all text-sm">
-                    <i class="fa-solid fa-location-dot text-base text-brand-500"></i> Avaa Navigaattori
-                </a>
-            </div>
         </div>
     </section>
 
+    <!-- Main Content -->
     <main class="max-w-4xl mx-auto px-4 py-8 space-y-8">
 
-        <!-- Services Section -->
+        <!-- Services Grid Section -->
         <section>
             <div class="flex items-center justify-between mb-4">
                 <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
@@ -185,7 +172,7 @@
             </div>
         </section>
 
-        <!-- Opening Hours & Contact Details -->
+        <!-- Opening Hours & Contact Info -->
         <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             <!-- Opening Hours Card -->
@@ -209,13 +196,13 @@
                 </ul>
             </div>
 
-            <!-- Contact Card -->
+            <!-- Contact Information Card -->
             <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm">
                 <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
                     <i class="fa-solid fa-address-card text-brand-600"></i> Yhteystiedot
                 </h3>
                 <div class="space-y-3.5 text-sm">
-                    <a href="https://maps.google.com/?q=Sarvikatu+2,+18100+Heinola" target="_blank" class="flex items-start gap-3 text-slate-700 hover:text-brand-600 transition-colors">
+                    <a href="https://maps.google.com/?q=Sarvikatu+2,+18100+Heinola" target="_blank" rel="noopener noreferrer" class="flex items-start gap-3 text-slate-700 hover:text-brand-600 transition-colors">
                         <i class="fa-solid fa-location-dot mt-1 text-brand-600"></i>
                         <div>
                             <p class="font-bold text-slate-900">Sarvikatu 2</p>
@@ -237,7 +224,7 @@
 
         </section>
 
-        <!-- Location & Map -->
+        <!-- Embedded Google Map -->
         <section class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm">
             <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
                 <i class="fa-solid fa-map-location-dot text-brand-600"></i> Sijainti Heinolassa
@@ -265,24 +252,26 @@
         <div class="max-w-4xl mx-auto space-y-3">
             <div class="font-bold text-slate-200 text-sm">Kepun Auto Oy</div>
             <p>Osa valtakunnallista Autonomi-korjaamoketjua.</p>
-            <p class="text-slate-500"> Sarvikatu 2, 18100 Heinola | Puh: 03-7157005</p>
+            <p class="text-slate-500">Sarvikatu 2, 18100 Heinola | Puh: 03-7157005</p>
             <p class="text-slate-600 pt-2">&copy; Kepun Auto Oy. Kaikki oikeudet pidätetään.</p>
         </div>
     </footer>
 
-    <!-- Mobile Fixed Bottom Action Bar -->
-    <div class="fixed bottom-0 left-0 right-0 bg-slate-900 border-t border-slate-800 p-3 md:hidden z-50 shadow-2xl">
-        <div class="grid grid-cols-2 gap-3 max-w-md mx-auto">
-            <a href="tel:037157005" class="flex items-center justify-center gap-2 bg-brand-600 active:bg-brand-700 text-white font-bold py-3 px-4 rounded-xl text-xs shadow-md">
-                <i class="fa-solid fa-phone text-sm"></i> Soita 03-7157005
-            </a>
-            <a href="https://maps.google.com/?q=Sarvikatu+2,+18100+Heinola" target="_blank" class="flex items-center justify-center gap-2 bg-slate-800 border border-slate-700 text-slate-200 active:bg-slate-700 font-bold py-3 px-4 rounded-xl text-xs">
-                <i class="fa-solid fa-location-dot text-brand-500"></i> Navigoi
-            </a>
-        </div>
+    <!-- Floating Action Button (FAB) Call Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="tel:037157005" aria-label="Soita korjaamolle" class="relative group flex items-center justify-center bg-brand-600 hover:bg-brand-700 active:scale-90 text-white w-14 h-14 rounded-full shadow-2xl transition-all duration-200">
+            <!-- Pulsing outer ring -->
+            <span class="absolute -inset-1 rounded-full bg-brand-500/40 animate-ping pointer-events-none"></span>
+            <i class="fa-solid fa-phone text-xl relative z-10"></i>
+            
+            <!-- Tooltip label for desktop hover -->
+            <span class="hidden md:group-hover:block absolute right-16 bg-slate-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap shadow-lg border border-slate-800">
+                Soita: 03-7157005
+            </span>
+        </a>
     </div>
 
-    <!-- Opening Hours Real-time Script -->
+    <!-- Opening Hours Calculation Script -->
     <script>
         function checkOpeningStatus() {
             const now = new Date();
