@@ -45,7 +45,7 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 pb-24 md:pb-8">
+<body class="bg-slate-50 text-slate-800 pb-8">
 
     <!-- Top Bar Header -->
     <header class="sticky top-0 z-40 bg-slate-900 text-white shadow-md border-b border-slate-800">
@@ -62,10 +62,11 @@
                 </div>
             </div>
             
-            <!-- Header Navigation Button -->
-            <a href="https://maps.google.com/?q=Sarvikatu+2,+18100+Heinola" target="_blank" rel="noopener noreferrer" class="bg-slate-800 hover:bg-slate-700 active:scale-95 text-white font-bold px-3.5 py-2 rounded-xl text-xs sm:text-sm flex items-center gap-2 border border-slate-700 transition-all shadow-sm">
-                <i class="fa-solid fa-location-dot text-brand-500"></i>
-                <span>Navigoi</span>
+            <!-- Header Call Button -->
+            <a href="tel:037157005" class="bg-brand-600 hover:bg-brand-700 active:scale-95 text-white font-bold px-3.5 py-2 rounded-xl text-xs sm:text-sm flex items-center gap-2 transition-all shadow-sm">
+                <i class="fa-solid fa-phone text-xs"></i>
+                <span class="hidden sm:inline">Soita: 03-7157005</span>
+                <span class="sm:hidden">Soita</span>
             </a>
         </div>
     </header>
@@ -83,9 +84,17 @@
             <h2 class="text-2xl sm:text-4xl font-black tracking-tight mb-3 leading-snug">
                 Ammattitaitoista autohuoltoa & kolarikorjausta Heinolassa
             </h2>
-            <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto">
+            <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-6">
                 Monimerkkikorjaamo Sarvikadulla. Määräaikaishuollot, ilmastointityöt, diagnostiikka sekä pelti- ja kolarikorjaukset.
             </p>
+
+            <!-- Hero Action: Navigation Button -->
+            <div class="max-w-xs mx-auto">
+                <a href="https://maps.google.com/?q=Sarvikatu+2,+18100+Heinola" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-bold py-3 px-5 rounded-2xl shadow-md transition-all text-sm active:scale-95">
+                    <i class="fa-solid fa-location-dot text-brand-500"></i>
+                    <span>Navigoi Sarvikadulle</span>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -257,21 +266,7 @@
         </div>
     </footer>
 
-    <!-- Floating Action Button (FAB) Call Button -->
-    <div class="fixed bottom-6 right-6 z-50">
-        <a href="tel:037157005" aria-label="Soita korjaamolle" class="relative group flex items-center justify-center bg-brand-600 hover:bg-brand-700 active:scale-90 text-white w-14 h-14 rounded-full shadow-2xl transition-all duration-200">
-            <!-- Pulsing outer ring -->
-            <span class="absolute -inset-1 rounded-full bg-brand-500/40 animate-ping pointer-events-none"></span>
-            <i class="fa-solid fa-phone text-xl relative z-10"></i>
-            
-            <!-- Tooltip label for desktop hover -->
-            <span class="hidden md:group-hover:block absolute right-16 bg-slate-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap shadow-lg border border-slate-800">
-                Soita: 03-7157005
-            </span>
-        </a>
-    </div>
-
-    <!-- Opening Hours Calculation Script -->
+    <!-- Real-time Opening Hours Calculation Script -->
     <script>
         function checkOpeningStatus() {
             const now = new Date();
