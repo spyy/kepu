@@ -39,6 +39,9 @@
         }
     </script>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
             -webkit-tap-highlight-color: transparent;
@@ -47,9 +50,11 @@
 </head>
 <body class="bg-slate-50 text-slate-800 pb-8">
 
-    <!-- Top Bar Header -->
+    <!-- Top Bar Header with Responsive Navigation Menu -->
     <header class="sticky top-0 z-40 bg-slate-900 text-white shadow-md border-b border-slate-800">
         <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+            
+            <!-- Logo & Title -->
             <div class="flex items-center space-x-3">
                 <div class="bg-brand-600 text-white p-2.5 rounded-xl shadow-lg">
                     <i class="fa-solid fa-wrench text-lg"></i>
@@ -61,14 +66,36 @@
                     </p>
                 </div>
             </div>
-            
-            <!-- Header Call Button -->
-            <a href="tel:037157005" class="bg-brand-600 hover:bg-brand-700 active:scale-95 text-white font-bold px-3.5 py-2 rounded-xl text-xs sm:text-sm flex items-center gap-2 transition-all shadow-sm">
-                <i class="fa-solid fa-phone text-xs"></i>
-                <span class="hidden sm:inline">Soita: 03-7157005</span>
-                <span class="sm:hidden">Soita</span>
-            </a>
+
+            <!-- Desktop Navigation Menu Links -->
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold text-slate-300">
+                <a href="#palvelut" class="hover:text-brand-500 transition-colors">Palvelut</a>
+                <a href="#aukioloajat" class="hover:text-brand-500 transition-colors">Aukioloajat</a>
+                <a href="#yhteystiedot" class="hover:text-brand-500 transition-colors">Yhteystiedot</a>
+                <a href="#sijainti" class="hover:text-brand-500 transition-colors">Sijainti</a>
+            </nav>
+
+            <!-- Mobile Hamburger Toggle Button -->
+            <button id="menuToggle" aria-label="Avaa valikko" class="md:hidden p-2 text-slate-300 hover:text-white focus:outline-none">
+                <i id="menuIcon" class="fa-solid fa-bars text-xl"></i>
+            </button>
         </div>
+
+        <!-- Mobile Dropdown Navigation Menu -->
+        <nav id="mobileMenu" class="hidden md:hidden bg-slate-800 border-t border-slate-700 px-4 py-3 space-y-2">
+            <a href="#palvelut" class="mobile-link block py-2 text-sm font-semibold text-slate-200 hover:text-brand-400 border-b border-slate-700/50">
+                <i class="fa-solid fa-screwdriver-wrench w-6 text-brand-500"></i> Palvelut
+            </a>
+            <a href="#aukioloajat" class="mobile-link block py-2 text-sm font-semibold text-slate-200 hover:text-brand-400 border-b border-slate-700/50">
+                <i class="fa-solid fa-clock w-6 text-brand-500"></i> Aukioloajat
+            </a>
+            <a href="#yhteystiedot" class="mobile-link block py-2 text-sm font-semibold text-slate-200 hover:text-brand-400 border-b border-slate-700/50">
+                <i class="fa-solid fa-address-card w-6 text-brand-500"></i> Yhteystiedot
+            </a>
+            <a href="#sijainti" class="mobile-link block py-2 text-sm font-semibold text-slate-200 hover:text-brand-400">
+                <i class="fa-solid fa-map-location-dot w-6 text-brand-500"></i> Sijainti
+            </a>
+        </nav>
     </header>
 
     <!-- Hero Section -->
@@ -88,9 +115,13 @@
                 Monimerkkikorjaamo Sarvikadulla. Määräaikaishuollot, ilmastointityöt, diagnostiikka sekä pelti- ja kolarikorjaukset.
             </p>
 
-            <!-- Hero Action: Navigation Button -->
-            <div class="max-w-xs mx-auto">
-                <a href="https://maps.google.com/?q=Sarvikatu+2,+18100+Heinola" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-bold py-3 px-5 rounded-2xl shadow-md transition-all text-sm active:scale-95">
+            <!-- Hero Buttons Grid: Call & Navigate -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-sm mx-auto">
+                <a href="tel:037157005" class="flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 active:scale-95 text-white font-bold py-3 px-5 rounded-2xl shadow-lg transition-all text-sm">
+                    <i class="fa-solid fa-phone text-sm"></i>
+                    <span>Soita: 03-7157005</span>
+                </a>
+                <a href="https://maps.google.com/?q=Sarvikatu+2,+18100+Heinola" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 active:scale-95 border border-slate-700 text-white font-bold py-3 px-5 rounded-2xl shadow-md transition-all text-sm">
                     <i class="fa-solid fa-location-dot text-brand-500"></i>
                     <span>Navigoi Sarvikadulle</span>
                 </a>
@@ -102,7 +133,7 @@
     <main class="max-w-4xl mx-auto px-4 py-8 space-y-8">
 
         <!-- Services Grid Section -->
-        <section>
+        <section id="palvelut" class="scroll-mt-20">
             <div class="flex items-center justify-between mb-4">
                 <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
                     <i class="fa-solid fa-screwdriver-wrench text-brand-600"></i> Palvelumme
@@ -181,11 +212,11 @@
             </div>
         </section>
 
-        <!-- Opening Hours & Contact Info -->
+        <!-- Opening Hours & Contact Info Grid -->
         <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             <!-- Opening Hours Card -->
-            <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm">
+            <div id="aukioloajat" class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm scroll-mt-20">
                 <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
                     <i class="fa-solid fa-clock text-brand-600"></i> Aukioloajat
                 </h3>
@@ -206,7 +237,7 @@
             </div>
 
             <!-- Contact Information Card -->
-            <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm">
+            <div id="yhteystiedot" class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm scroll-mt-20">
                 <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
                     <i class="fa-solid fa-address-card text-brand-600"></i> Yhteystiedot
                 </h3>
@@ -234,7 +265,7 @@
         </section>
 
         <!-- Embedded Google Map -->
-        <section class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm">
+        <section id="sijainti" class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm scroll-mt-20">
             <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
                 <i class="fa-solid fa-map-location-dot text-brand-600"></i> Sijainti Heinolassa
             </h3>
@@ -262,12 +293,12 @@
             <div class="font-bold text-slate-200 text-sm">Kepun Auto Oy</div>
             <p>Osa valtakunnallista Autonomi-korjaamoketjua.</p>
             <p class="text-slate-500">Sarvikatu 2, 18100 Heinola | Puh: 03-7157005</p>
-            <p class="text-slate-600 pt-2">&copy; sami.pyy@gmail.com</p>
         </div>
     </footer>
 
-    <!-- Real-time Opening Hours Calculation Script -->
+    <!-- Interactive Scripts -->
     <script>
+        // Real-time Opening Hours Calculation
         function checkOpeningStatus() {
             const now = new Date();
             const day = now.getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
@@ -276,7 +307,6 @@
             const statusDot = document.getElementById('statusDot');
             const statusText = document.getElementById('statusText');
 
-            // Open Mon-Fri 07:00 - 17:00
             if (day >= 1 && day <= 5) {
                 if (hour >= 7 && hour < 17) {
                     statusDot.className = "w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse";
@@ -297,6 +327,34 @@
                 statusText.innerText = "Suljettu viikonloppuna • Avaa ma klo 07:00";
             }
         }
+
+        // Mobile Menu Toggle logic
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuToggle.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when link clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
 
         checkOpeningStatus();
     </script>
