@@ -50,7 +50,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 pb-8">
 
-    <!-- Top Bar Header with Responsive Navigation Menu -->
+    <!-- Top Bar Header -->
     <header class="sticky top-0 z-40 bg-slate-900 text-white shadow-md border-b border-slate-800">
         <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
             
@@ -75,28 +75,58 @@
                 <a href="#sijainti" class="hover:text-brand-500 transition-colors">Sijainti</a>
             </nav>
 
-            <!-- Mobile Hamburger Toggle Button -->
+            <!-- Mobile Menu Toggle Button -->
             <button id="menuToggle" aria-label="Avaa valikko" class="md:hidden p-2 text-slate-300 hover:text-white focus:outline-none">
-                <i id="menuIcon" class="fa-solid fa-bars text-xl"></i>
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Full-Screen Overlay Navigation Menu -->
+    <div id="mobileMenuOverlay" class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md hidden flex-col justify-between p-6 transition-all duration-300">
+        
+        <!-- Overlay Header: Title & Close Button -->
+        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-brand-600 text-white p-2 rounded-lg">
+                    <i class="fa-solid fa-wrench text-base"></i>
+                </div>
+                <div>
+                    <span class="font-extrabold text-base text-white">Kepun Auto Oy</span>
+                    <p class="text-[10px] text-brand-500 font-medium">Autonomi-korjaamo</p>
+                </div>
+            </div>
+            <button id="closeMenu" aria-label="Sulje valikko" class="p-2 text-slate-400 hover:text-white text-2xl focus:outline-none">
+                <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
 
-        <!-- Mobile Dropdown Navigation Menu -->
-        <nav id="mobileMenu" class="hidden md:hidden bg-slate-800 border-t border-slate-700 px-4 py-3 space-y-2">
-            <a href="#palvelut" class="mobile-link block py-2 text-sm font-semibold text-slate-200 hover:text-brand-400 border-b border-slate-700/50">
-                <i class="fa-solid fa-screwdriver-wrench w-6 text-brand-500"></i> Palvelut
+        <!-- Overlay Navigation Links -->
+        <nav class="flex flex-col space-y-4 my-auto text-center">
+            <a href="#palvelut" class="mobile-link text-xl font-bold text-slate-100 hover:text-brand-400 py-3 rounded-xl hover:bg-slate-900/60 transition-colors flex items-center justify-center gap-3">
+                <i class="fa-solid fa-screwdriver-wrench text-brand-500 text-lg"></i> Palvelut
             </a>
-            <a href="#aukioloajat" class="mobile-link block py-2 text-sm font-semibold text-slate-200 hover:text-brand-400 border-b border-slate-700/50">
-                <i class="fa-solid fa-clock w-6 text-brand-500"></i> Aukioloajat
+            <a href="#aukioloajat" class="mobile-link text-xl font-bold text-slate-100 hover:text-brand-400 py-3 rounded-xl hover:bg-slate-900/60 transition-colors flex items-center justify-center gap-3">
+                <i class="fa-solid fa-clock text-brand-500 text-lg"></i> Aukioloajat
             </a>
-            <a href="#yhteystiedot" class="mobile-link block py-2 text-sm font-semibold text-slate-200 hover:text-brand-400 border-b border-slate-700/50">
-                <i class="fa-solid fa-address-card w-6 text-brand-500"></i> Yhteystiedot
+            <a href="#yhteystiedot" class="mobile-link text-xl font-bold text-slate-100 hover:text-brand-400 py-3 rounded-xl hover:bg-slate-900/60 transition-colors flex items-center justify-center gap-3">
+                <i class="fa-solid fa-address-card text-brand-500 text-lg"></i> Yhteystiedot
             </a>
-            <a href="#sijainti" class="mobile-link block py-2 text-sm font-semibold text-slate-200 hover:text-brand-400">
-                <i class="fa-solid fa-map-location-dot w-6 text-brand-500"></i> Sijainti
+            <a href="#sijainti" class="mobile-link text-xl font-bold text-slate-100 hover:text-brand-400 py-3 rounded-xl hover:bg-slate-900/60 transition-colors flex items-center justify-center gap-3">
+                <i class="fa-solid fa-map-location-dot text-brand-500 text-lg"></i> Sijainti
             </a>
         </nav>
-    </header>
+
+        <!-- Overlay Bottom Quick Action Buttons -->
+        <div class="grid grid-cols-2 gap-3 pt-4 border-t border-slate-800">
+            <a href="tel:037157005" class="mobile-link flex items-center justify-center gap-2 bg-brand-600 active:scale-95 text-white font-bold py-3 rounded-xl text-sm">
+                <i class="fa-solid fa-phone"></i> Soita
+            </a>
+            <a href="https://maps.google.com/?q=Sarvikatu+2,+18100+Heinola" target="_blank" rel="noopener noreferrer" class="mobile-link flex items-center justify-center gap-2 bg-slate-800 active:scale-95 text-white font-bold py-3 rounded-xl text-sm border border-slate-700">
+                <i class="fa-solid fa-location-dot text-brand-500"></i> Navigoi
+            </a>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="bg-gradient-to-b from-slate-900 to-slate-800 text-white pt-8 pb-10 px-4 rounded-b-3xl shadow-xl">
@@ -328,32 +358,29 @@
             }
         }
 
-        // Mobile Menu Toggle logic
+        // Full Screen Overlay Navigation Menu Logic
         const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuIcon = document.getElementById('menuIcon');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        menuToggle.addEventListener('click', () => {
-            const isHidden = mobileMenu.classList.contains('hidden');
-            if (isHidden) {
-                mobileMenu.classList.remove('hidden');
-                menuIcon.classList.remove('fa-bars');
-                menuIcon.classList.add('fa-xmark');
-            } else {
-                mobileMenu.classList.add('hidden');
-                menuIcon.classList.remove('fa-xmark');
-                menuIcon.classList.add('fa-bars');
-            }
-        });
+        function openOverlay() {
+            mobileMenuOverlay.classList.remove('hidden');
+            mobileMenuOverlay.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
 
-        // Close mobile menu when link clicked
+        function closeOverlay() {
+            mobileMenuOverlay.classList.add('hidden');
+            mobileMenuOverlay.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        menuToggle.addEventListener('click', openOverlay);
+        closeMenu.addEventListener('click', closeOverlay);
+
         mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuIcon.classList.remove('fa-xmark');
-                menuIcon.classList.add('fa-bars');
-            });
+            link.addEventListener('click', closeOverlay);
         });
 
         checkOpeningStatus();
